@@ -1,15 +1,23 @@
+import { Link } from "react-router-dom";
 function Nav() {
   return (
     <nav>
-      <div className="container mx-auto flex justify-center pb-5">
-        <ul className=" cursor-pointer  flex gap-10 mt-6 ">
-          <li>Home</li>
-          <li>About Us</li>
-          <li>contact Us</li>
-          <li>Registration</li>
-          <li>Log in</li>
-          <li>Log out</li>
+      <div className="container mx-auto items-center justify-between flex  pb-5">
+        <ul className=" cursor-pointer  flex gap-10  ">
+          <Link to="/">
+            <li>Home</li>
+          </Link>
+          <Link to="/login">
+            <li>Log in</li>
+          </Link>
+          <button className="">Registration</button>
+          <button>Log Out</button>
         </ul>
+        <div className="">
+          <button className="border rounded-full p-6 mt-1 bg-stone-700">
+            Register as a partner
+          </button>
+        </div>
       </div>
     </nav>
   );
