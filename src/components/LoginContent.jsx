@@ -1,12 +1,12 @@
 function LoginContent() {
   return (
-    <>
+    <div className="container mx-auto">
       
       <div>
-        Login Page
+        <input type="text" placeholder="" />
       </div>
       
-    </>
+    </div>
   );
 }
 export default LoginContent;
