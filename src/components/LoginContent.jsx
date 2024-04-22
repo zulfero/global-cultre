@@ -12,9 +12,9 @@ function LoginContent(){
             <input
               type="text"
               placeholder="Email Address"
-              className="border-2  px-[5em] py-8 "
+              className="border-2  px-[5em] py-8  shadow-xl"
             />
-            <div className="flex border-2  px-[5em] py-8  ">
+            <div className="flex border-2  px-[5em] py-8 shadow-xl ">
               <input type="text"placeholder="Password" className="" />
              
             </div>
