@@ -1,7 +1,8 @@
+import RegistrationContent from "../components/RegistrationContent"
 function Registration(){
     return(
         <>
-        <p>this is the registration pages</p>
+        <RegistrationContent/>
         </>
     )
 }

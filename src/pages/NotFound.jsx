@@ -1,7 +1,10 @@
-function NotFound(){
-    return<>
-    Page Not Found
+import NotfoundContent from "../components/NotfoundContent";
+function NotFound() {
+  return (
+    <>
+      <NotfoundContent />
     </>
+  );
 }
 
 export default NotFound;

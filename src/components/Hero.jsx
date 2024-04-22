@@ -1,4 +1,4 @@
-import { BsSearch } from "react-icons/bs";
+
 
 function Hero() {
   return (
