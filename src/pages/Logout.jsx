@@ -1,6 +1,8 @@
-function Logout(){
-    return(<>
-    <Logout/>
-    </>)
+function Logout() {
+  return (
+    <>
+      <Logout />
+    </>
+  );
 }
-export default Logout
+export default Logout;
