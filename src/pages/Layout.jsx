@@ -4,18 +4,14 @@ import Hero from "../components/Hero";
 import Herocard from "../components/Herocard";
 import Site from "../components/Site";
 
-
-function Layout({Children}){
-    return(
+function Layout({ children }) {
+  return (
     <div>
-        
-<Nav/>
+      <Nav />
 
-<Hero/>
-<Herocard/>
-<Site/>
-<main className="min-h-screen">{Children}</main>
-<Footer/>
-    </div>)
+      <main className="min-h-screen">{children}</main>
+      <Footer />
+    </div>
+  );
 }
-export default Layout
+export default Layout;

@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Layout from "../pages/Layout";
-import Login from "../pages/login";
+import Login from "../pages/Login";
+import NotFound from "../pages/NotFound";
 
 function Router() {
   return (
@@ -21,6 +22,15 @@ function Router() {
           element={
             <Layout>
               <Login />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="*"
+          element={
+            <Layout>
+              <NotFound />
             </Layout>
           }
         />
