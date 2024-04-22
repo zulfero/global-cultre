@@ -2,7 +2,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Herocard from "../components/Herocards";
-import Site from "../components/Site";
+// import Site from "../components/Site";
 
 function Layout({ children }) {
   return (

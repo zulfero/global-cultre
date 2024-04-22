@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import Layout from "../pages/Layout";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
+import Register from "./Register";
+import Logout from "../pages/Logout";
 
 function Router() {
   return (
@@ -26,7 +28,22 @@ function Router() {
             </Layout>
           }
         />
-
+        <Route
+          path="register"
+          element={
+            <Layout>
+              <Register />
+            </Layout>
+          }
+        />
+<Route
+          path="logout"
+          element={
+            <Layout>
+              <Logout />
+            </Layout>
+          }
+        />
         <Route
           path="*"
           element={
