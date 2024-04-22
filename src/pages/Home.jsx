@@ -1,11 +1,11 @@
 import Hero from "../components/Hero";
-import Herocard from "../components/Herocard";
+import Herocard from "../components/Herocards";
 
 function Home() {
   return (
     <>
       <Hero />
-      <Herocard/>
+      <Herocard />
     </>
   );
 }
