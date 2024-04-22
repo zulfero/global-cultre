@@ -1,21 +1,31 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-i
+import Home from "../pages/Home";
+import Layout from "../pages/Layout";
+import Login from "../pages/login";
+
 function Router() {
   return (
-    <>
-      <BrowserRouter />
+    <BrowserRouter>
       <Routes>
         <Route
           path="/"
           element={
             <Layout>
-              <home />
+              <Home />
             </Layout>
           }
-        ></Route>
+        />
+
+        <Route
+          path="/login"
+          element={
+            <Layout>
+              <Login />
+            </Layout>
+          }
+        />
       </Routes>
-      <BrowserRouter />
-    </>
+    </BrowserRouter>
   );
 }
 export default Router;
