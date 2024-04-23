@@ -1,4 +1,5 @@
 import Herocard from "./Herocard";
+import { Link } from "react-router-dom";
 
 function Herocards() {
   return (

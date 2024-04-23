@@ -14,7 +14,7 @@ function Nav() {
           <button>Log Out</button>
         </ul>
         <div className="">
-          <button className="border rounded-full p-6 mt-1 bg-stone-700">
+          <button className="border rounded-full p-6 mt-1 bg-stone-700 text-white">
             Register as a partner
           </button>
         </div>

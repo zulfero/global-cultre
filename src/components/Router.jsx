@@ -3,8 +3,8 @@ import Home from "../pages/Home";
 import Layout from "../pages/Layout";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
-import Site from "../pages/Site";
-
+import Site from "./Site";
+import AdminForm from "../pages/AdminForm";
 
 function Router() {
   return (
@@ -36,11 +36,19 @@ function Router() {
             </Layout>
           }
         />
-           <Route
+        <Route
           path="/site"
           element={
             <Layout>
-              <Site/>
+              <Site />
+            </Layout>
+          }
+        />
+        <Route
+          path="/adminform"
+          element={
+            <Layout>
+              <AdminForm />
             </Layout>
           }
         />

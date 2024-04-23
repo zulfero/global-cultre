@@ -3,7 +3,7 @@ function Hero() {
     <div className="">
       <div className="">
         <img src="src/images/banner.jpg" alt="" />
-        <img src=""  alt="" />
+        <img src="" alt="" />
       </div>
       <div className="flex justify-center mt-[3em]  ">
         <input
