@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Layout from "../pages/Layout";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
+import Site from "../pages/Site";
 
 
 function Router() {
@@ -32,6 +33,14 @@ function Router() {
           element={
             <Layout>
               <NotFound />
+            </Layout>
+          }
+        />
+           <Route
+          path="/site"
+          element={
+            <Layout>
+              <Site/>
             </Layout>
           }
         />
