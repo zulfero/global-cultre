@@ -1,10 +1,13 @@
 
 import { IoLogOutOutline } from "react-icons/io5";
 function Signout(){
+    const logOut=()=>{
+
+    }
     return(
         <div>
             <div>
-                <div className="flex items-center justify-center mt-12" >
+                <div className="flex items-center justify-center mt-11" >
             <IoLogOutOutline size={100} />
             </div>
             

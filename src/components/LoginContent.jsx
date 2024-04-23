@@ -8,9 +8,37 @@ function LoginContent(){
     setShowPassword(prev=>!prev)
   }
   
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    
+  });
+  const [errorMessage, setErrorMessage]=useState("")
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSignIn=()=>{
+    
+    if(formData.email===""){
+      setErrorMessage("Kindly fill in the email address")
+    }
+   
+    
+    else if(formData.password===""){
+      setErrorMessage("Kindly fill in the password")
+    }
+    
   
- 
+  
+    else{
+      setErrorMessage("")
+      console.log("signing")
+      console.log(formData);
+
+    }
+  
+  }
     return(
         <>
         <div className="w-[100%] flex gap-[2em]">
@@ -23,28 +51,36 @@ function LoginContent(){
             </h1>
             <input
               type="text"
+              name="email"
               placeholder="Email Address"
-              className="border-2  px-[5em] py-8  shadow-xl"
+              className="border-2  px-[5em] py-8  shadow-xl outline-none"
+              onChange={handleChange}
             />
-            <div className="flex border-2  justify-between px-[5em] py-8 shadow-xl ">
-              <input type="text"placeholder="Password" className="" />
+            <div className="flex border-2  justify-between px-[5em] py-8 shadow-xl outline-none">
+              <input type={showPassword?"password":"text"}placeholder="Password"  name="password" className="outline-none" onChange={handleChange} />
               <div className="flex gap-2" onClick={handleShowPassord}>
               {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
             </div>
             </div>
-            <div className="item-center">
-              
-              {/* <p className=" text-[20px]">Forgot Password?</p> */}
+            <div className="flex justify-between">
+              <div className="flex items-center">
+              <input type="checkbox" className="w-4 h-4 mr-2"/>
+              <p>Remember me</p>
+              </div>
+              <div>
+              <p className=" text-[20px] underline underline-offset-2">Forgot Password ?</p>
+              </div>
             </div>
-            <div className="flex justify-center">
+            <p className="text-[red]">{errorMessage}</p>
+            <div className="flex justify-center " onClick={handleSignIn}>
             <button className="border-none rounded-[2em] px-[5em] py-5 font-bold bg-stone-700 text-white">
               Sign In
             </button>
             </div>
             <div className="flex justify-center text-[20px]">
-              Dont Have An Account Yet?
-              <a href="/signup" className="text-[#EAC117]">
-                Register 
+              Dont Have An Account Yet ?  
+              <a href="/register" className="text-[#EAC117]">
+                  Register 
               </a>
             </div>
           </div>
