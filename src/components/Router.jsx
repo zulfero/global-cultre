@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Register from "./Register";
 import Logout from "../pages/Logout";
+import Company from "./Company";
 
 function Router() {
   return (
@@ -33,6 +34,14 @@ function Router() {
           element={
             <Layout>
               <Register />
+            </Layout>
+          }
+        />
+        <Route
+          path="campany"
+          element={
+            <Layout>
+              <Company />
             </Layout>
           }
         />

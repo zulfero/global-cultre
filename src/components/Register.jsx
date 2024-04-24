@@ -25,10 +25,8 @@ const [errorMessage, setErrorMessage]=useState("")
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
  
-  const [signUpErroMassage,setSignUpErrorMessage]=useState("")
-  const [errorPassword,setErrorPassword]=useState("")
   
-   
+   const [emailError,setEmail]=useState("")
 
 
   const handleRegister=async(e)=>{
@@ -62,14 +60,17 @@ else{
 
 console.log(user)
 
-
-  setSignUpErrorMessage("LogIn Successfully")
+    // alert("Successfully Registered")
     navigate("/login")
 
     
   })
   .catch((error) => {
-   console.log(error)
+  //  console.log(error)
+  // console.log(error)
+  if (errorCode === "auth/email-already-in-use") {
+    setErrorMessage("An account with that emaill already exists");
+  }
   });
   const details= await addDoc(collection(db,"users"),formData)
 
@@ -136,7 +137,6 @@ console.log(user)
           />
           
             <p className="text-[red] text-2xl">{errorMessage}</p>
-            <p className="text-[red] text-2xl">{signUpErroMassage}</p>
           <div className="flex justify-center" >
             <button
               className="border-none rounded-[2em] px-[5em] py-5 font-bold bg-stone-700 text-white "
