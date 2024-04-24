@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Site from "./Site";
 import AdminForm from "../pages/AdminForm";
+import Partner from "../pages/Partner";
 
 function Router() {
   return (
@@ -49,6 +50,14 @@ function Router() {
           element={
             <Layout>
               <AdminForm />
+            </Layout>
+          }
+        />
+          <Route
+          path="/partner"
+          element={
+            <Layout>
+              <Partner />
             </Layout>
           }
         />

@@ -1,13 +1,12 @@
-function SiteProp(heading, img, image, paragraph) {
+import { useState } from "react";
+
+function SiteProp({ heading, img, image, paragraph, category, setCategory }) {
   return (
     <div>
-      <div className="flex gap-5 mb-6">
-        <h1>{heading}</h1>
-        <img className="size-8" src={img} alt="" />
-      </div>
-      <div>
-        <img src={image} alt="" />
-        <p>{paragraph}</p>
+      <div className="flex gap-5 mb-6"></div>
+      <div className="  border rounded-lg bg-stone-600 flex-col mb-10">
+        <img className="" src={image} alt="" />
+        <p className="text-white  ">{paragraph}</p>
       </div>
     </div>
   );
