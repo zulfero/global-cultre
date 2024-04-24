@@ -2,7 +2,11 @@ import { ref, uploadString } from "firebase/storage";
 import { storage } from "../firebaseStorage";
 import { useState } from "react";
 function AdminUpload() {
-  const [usedata, setUsedata] = useState({});
+  const [usedata, setUsedata] = useState({
+    name: "",
+    bio: "",
+  });
+  const [errormessege, seterrorMessege] = useState("");
   function handleChange(e) {
     setUsedata({ ...usedata, [e.target.name]: e.target.value });
   }
@@ -27,6 +31,13 @@ function AdminUpload() {
     };
     reader.readAsDataURL(file);
     console.log(file);
+    if (usedata.name === "") {
+      seterrorMessege("plese fill out this field");
+    } else if (usedata.bio === "") {
+      seterrorMessege("plese fill out this field");
+    } else {
+      seterrorMessege("");
+    }
   }
 
   const handleCultureSubmit = () => {
@@ -35,10 +46,10 @@ function AdminUpload() {
 
   return (
     <div className="container mx-auto">
-      <div className="flex justify-center flex-col">
-        <div className="flex justify-center mb-8">
-          <h1 className="text-4xl">Upload Culture</h1>
-        </div>
+      <div className="flex justify-center mb-8">
+        <h1 className="text-4xl">Upload Culture</h1>
+      </div>
+      <div className="flex justify-center flex-col border bg-stone-200 pt-9 pb-9">
         <div className="flex items-center justify-center flex-col gap-12">
           <input
             onChange={(e) => handleChange(e)}
@@ -73,16 +84,17 @@ function AdminUpload() {
             placeholder="Brief Bio"
           ></textarea>
         </div>
-      </div>
-      <div className="flex justify-center flex-col gap-9 items-center">
-        <div className="flex flex-col gap-5">
-          <div className="mt-7">
-            <button
-              onClick={(e) => handleCultureSubmit(e)}
-              className="border rounded-full p-[1.4em] text-white px-[5em] text-[1.3em] bg-stone-700"
-            >
-              Submit
-            </button>
+        <div className="flex justify-center flex-col gap-9 items-center">
+          <div className="flex flex-col gap-5">
+            <div className="mt-7">
+              <button
+                onClick={(e) => handleCultureSubmit(e)}
+                className="border rounded-full p-[1.4em] text-white px-[5em] text-[1.3em] bg-stone-700"
+              >
+                Submit
+              </button>
+              <p className="text-[red]">{errormessege}</p>
+            </div>
           </div>
         </div>
       </div>

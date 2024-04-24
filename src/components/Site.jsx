@@ -41,7 +41,7 @@ function Site() {
       return (
         <div>
           <SiteProp
-            image="src/images/gikuyu/luofood.jpeg"
+            image="src/images/gikuyu/musica.jpg"
             paragraph=" This is mostly our starch; the brown one features millet and cassava
             flour. However, you can also have the white one that features maize
             flour. For Luos, this is a staple to date that you will have
