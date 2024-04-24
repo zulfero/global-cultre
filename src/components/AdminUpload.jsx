@@ -1,12 +1,14 @@
 import { ref, uploadString } from "firebase/storage";
 import { storage } from "../firebaseStorage";
 import { useState } from "react";
+import loader from "../images/loader.gif";
 function AdminUpload() {
   const [usedata, setUsedata] = useState({
     name: "",
     bio: "",
   });
   const [errormessege, seterrorMessege] = useState("");
+  const [loading, setLoading] = useState(true);
   function handleChange(e) {
     setUsedata({ ...usedata, [e.target.name]: e.target.value });
   }
@@ -31,10 +33,10 @@ function AdminUpload() {
     };
     reader.readAsDataURL(file);
     console.log(file);
-    if (usedata.name === "") {
-      seterrorMessege("plese fill out this field");
-    } else if (usedata.bio === "") {
-      seterrorMessege("plese fill out this field");
+    if (file.name === "") {
+      seterrorMessege("Plese fill out all the field");
+    } else if (file.bio === "") {
+      seterrorMessege("Plese fill out all the fields");
     } else {
       seterrorMessege("");
     }
@@ -74,6 +76,8 @@ function AdminUpload() {
               onChange={(e) => handleCoverImageUpload(e)}
             />
           </div>
+          {usedata.coverImg && <img src={usedata.coverImg} alt="" />}
+
           <textarea
             onChange={(e) => handleChange(e)}
             className="border shadow-xl outline-none"
@@ -93,7 +97,7 @@ function AdminUpload() {
               >
                 Submit
               </button>
-              <p className="text-[red]">{errormessege}</p>
+              <p className="text-[red] pl-12 pt-5 font-bold">{errormessege}</p>
             </div>
           </div>
         </div>
