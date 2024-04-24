@@ -1,6 +1,10 @@
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import { auth,db } from "../firebase";
+import {collection,addDoc} from "firebase/firestore"
 
 function LoginContent(){
   const [showPassword, setShowPassword] = useState(true);
@@ -13,13 +17,17 @@ function LoginContent(){
     password: "",
     
   });
+  const [loginErrorMessage,setloginErrorMessage]=useState("")
+  
   const [errorMessage, setErrorMessage]=useState("")
 
   const handleChange = (e) => {
+   
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const handleSignIn=()=>{
-    
+  
+  const handleSignIn=async(e)=>{
+     e.preventDefault()
     if(formData.email===""){
       setErrorMessage("Kindly fill in the email address")
     }
@@ -33,8 +41,27 @@ function LoginContent(){
   
     else{
       setErrorMessage("")
-      console.log("signing")
-      console.log(formData);
+      
+      signInWithEmailAndPassword(auth, formData.email, formData.password)
+  .then((userData) => {
+    const user = userData.user;
+
+console.log(user)
+
+    // alert("Successfully ")
+
+    navigate("/adminform")
+
+    
+  })
+  .catch((error) => {
+    setloginErrorMessage("Invalid Email or Password")
+   
+  //  console.log(error)
+  });
+  const details= await addDoc(collection(db,"users"),formData)
+
+  console.log(details)
 
     }
   
@@ -71,8 +98,11 @@ function LoginContent(){
               <p className=" text-[20px] underline underline-offset-2">Forgot Password ?</p>
               </div>
             </div>
-            <p className="text-[red]">{errorMessage}</p>
-            <div className="flex justify-center " onClick={handleSignIn}>
+            <p className="text-[red] text-2xl">{errorMessage}</p>
+            <p className="text-[red] text-2xl">{loginErrorMessage}</p>
+            
+            
+            <div className="flex justify-center " onClick={(e)=>handleSignIn(e)}>
             <button className="border-none rounded-[2em] px-[5em] py-5 font-bold bg-stone-700 text-white">
               Sign In
             </button>

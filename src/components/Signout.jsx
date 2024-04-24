@@ -1,12 +1,22 @@
 
 import { IoLogOutOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import { auth,db } from "../firebase";
+import {collection,addDoc} from "firebase/firestore"
+import { getAuth, signOut } from "firebase/auth";
 function Signout(){
-    const logOut=()=>{
+    const logOut=async(e)=>{
+e.preventDefoult()
 
     }
+    const handleLogOut=()=>{
+        
+    }
+    
     return(
         <div>
-            <div>
+            <div className=""> 
+            <div className="bg-white">
                 <div className="flex items-center justify-center mt-11" >
             <IoLogOutOutline size={100} />
             </div>
@@ -21,6 +31,7 @@ function Signout(){
         <button className="border-none rounded-[2em] px-[5em] py-5 font-bold bg-[#eac117] text-white">Yes log me out</button>
             </div>
             </div>
+        </div>
         </div>
         </div>
     )
