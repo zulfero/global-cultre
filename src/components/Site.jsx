@@ -69,7 +69,7 @@ function Site() {
   }
 
   return (
-    <div className="">
+    <div className="mt-[1em]">
       <div className="h-[50vh] w-[100%] bg-[linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),url(src/images/gikuyu/luhya.jpg)] bg-no-repeat bg-cover">
         <h1 className="text-[4em] flex justify-center items-center text-white ">
           The luo

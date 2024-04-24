@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 function Nav() {
   return (
-    <nav>
+    <nav className="sticky top-0 w-full bg-stone-200">
       <div className="container mx-auto items-center justify-between flex  pb-5">
         <ul className=" cursor-pointer  flex gap-10  ">
           <Link to="/">

@@ -1,4 +1,38 @@
+import { ref, uploadString } from "firebase/storage";
+import { storage } from "../firebaseStorage";
+import { useState } from "react";
 function AdminUpload() {
+  const [usedata, setUsedata] = useState({});
+  function handleChange(e) {
+    setUsedata({ ...usedata, [e.target.name]: e.target.value });
+  }
+  function handleCoverImageUpload(e) {
+    const file = e.target.files[0];
+    const storageRef = ref(storage, `/cultures/${file.name}`);
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      console.log(reader.result);
+
+      const base64String = reader.result;
+      uploadString(storageRef, base64String, "data_url").then((snapshot) => {
+        console.log("Uploaded a data_url string!");
+
+        setUsedata({
+          ...usedata,
+          coverImg: `https://firebasestorage.googleapis.com/v0/b/culture-clan.appspot.com/o/cultures%2F${file.name}?alt=media`,
+        });
+      });
+    };
+    reader.readAsDataURL(file);
+    console.log(file);
+  }
+
+  const handleCultureSubmit = () => {
+    console.log(usedata);
+  };
+
   return (
     <div className="container mx-auto">
       <div className="flex justify-center flex-col">
@@ -6,25 +40,47 @@ function AdminUpload() {
           <h1 className="text-4xl">Upload Culture</h1>
         </div>
         <div className="flex items-center justify-center flex-col gap-12">
-          <input className="border p-7 shadow-xl outline-none " type="text" placeholder="Upload Tribe Name" />
-          <div className="m-9 shadow-xl">
-            <input className="border p-[5em] outline-none" type="text" placeholder="upload a cover image" />
+          <input
+            onChange={(e) => handleChange(e)}
+            className="border p-7 shadow-xl outline-none "
+            type="text"
+            placeholder="Upload Tribe Name"
+            name="name"
+          />
+          <div className="m-9 flex-col gap-4  shadow-xl flex border p-[4em] outline-none">
+            <label className="text-[1.4em]">Upload Cover image</label>
+            <label
+              htmlFor="cover"
+              className="bg-stone-600 text-white py-4 px-8 rounded-md text-center cursor-pointer"
+            >
+              Select Image
+            </label>
+            <input
+              className="outline-none hidden"
+              type="file"
+              placeholder="upload a cover image"
+              id="cover"
+              onChange={(e) => handleCoverImageUpload(e)}
+            />
           </div>
           <textarea
+            onChange={(e) => handleChange(e)}
             className="border shadow-xl outline-none"
-            name=""
+            name="bio"
             id=""
-            cols="30"
-            rows="5"
+            cols="50"
+            rows="7"
             placeholder="Brief Bio"
           ></textarea>
         </div>
       </div>
       <div className="flex justify-center flex-col gap-9 items-center">
-        <h1 className="text-2xl mt-6">Categories</h1>
         <div className="flex flex-col gap-5">
           <div className="mt-7">
-            <button className="border rounded-full p-[1.4em] text-white px-[5em] text-[1.3em] bg-stone-700">
+            <button
+              onClick={(e) => handleCultureSubmit(e)}
+              className="border rounded-full p-[1.4em] text-white px-[5em] text-[1.3em] bg-stone-700"
+            >
               Submit
             </button>
           </div>
