@@ -1,9 +1,8 @@
-import RegistrationContent from "../components/RegistrationContent"
+import Register from "../components/Register"
+
 function Registration(){
     return(
-        <>
-        <RegistrationContent/>
-        </>
+        <Register/>
     )
 }
 export default Registration

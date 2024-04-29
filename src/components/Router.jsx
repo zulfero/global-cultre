@@ -5,8 +5,10 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Site from "./Site";
 import AdminForm from "../pages/AdminForm";
-import Partner from "../pages/Partner";
 import Questionare from "../pages/Questionare";
+import Register from "./Register";
+import Logout from "../pages/Logout";
+import Company from "./Company";
 
 function Router() {
   return (
@@ -51,6 +53,38 @@ function Router() {
           element={
             <Layout>
               <Questionare />
+            </Layout>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Layout>
+              <Login />
+            </Layout>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <Layout>
+              <Register />
+            </Layout>
+          }
+        />
+        <Route
+          path="/logout"
+          element={
+            <Layout>
+              <Logout />
+            </Layout>
+          }
+        />
+        <Route
+          path="/campany"
+          element={
+            <Layout>
+              <Company />
             </Layout>
           }
         />

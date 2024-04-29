@@ -9,7 +9,7 @@ function AdminUpload() {
     name: "",
     bio: "",
   });
-  const [submitmesseg,setSubmitMessege] = useState(false)
+  const [submitmesseg, setSubmitMessege] = useState(false);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   function handleChange(e) {
@@ -39,13 +39,6 @@ function AdminUpload() {
     };
     reader.readAsDataURL(file);
     console.log(file);
-    // if (file.name === "") {
-    //   setErrors("Plese fill out all the field");
-    // } else if (file.bio === "") {
-    //   setErrors("Plese fill out all the fields");
-    // } else {
-    //   setErrors("");
-    // }
   }
 
   const handleCultureSubmit = async () => {
@@ -64,21 +57,26 @@ function AdminUpload() {
     if (usedata.name && usedata.coverImg && usedata.bio) {
       setErrors({});
       // Add a new document with a generated id.
-      const docRef = await addDoc(collection(db, "cultures"), {
-        name: "Tokyo",
-        country: "Japan",
-      });
+      const docRef = await addDoc(collection(db, "cultures"), usedata);
       console.log("Document written with ID: ", docRef.id);
+      if(docRef){
+        setUsedata({
+          name:"",
+          bio:"",
+          coverImg:""
+        })
+      }
     }
 
     setErrors(inputErrors);
     console.log(inputErrors);
   };
-  const handleSubmitMessege =() =>{
-    const  submitedMessege={}
-    if(usedata.bio){}
-  } 
 
+  const handleSubmitMessege = () => {
+    const submitedMessege = {};
+    if (usedata.bio) {
+    }
+  };
 
   return (
     <div className="container mx-auto">
@@ -94,13 +92,13 @@ function AdminUpload() {
           )}
           <input
             onChange={(e) => handleChange(e)}
-            className="border p-7 shadow-xl outline-none "
+            className="border p-7 px-[8em] shadow-xl outline-none "
             type="text"
             placeholder="Upload Tribe Name"
             name="name"
-          />
+            value={usedata.name}          />
 
-          <div className="m-9 flex-col gap-4  shadow-xl flex border p-[4em] outline-none">
+          <div className="m-9 flex-col gap-4  shadow-xl flex border p-[4em] px-[10em] outline-none">
             <label className="text-[1.4em]">Upload Cover image</label>
             <label
               htmlFor="cover"
@@ -132,12 +130,13 @@ function AdminUpload() {
           )}
           <textarea
             onChange={(e) => handleChange(e)}
-            className="border shadow-xl outline-none"
+            className="border shadow-xl outline-none resize-none"
             name="bio"
             id=""
             cols="50"
             rows="7"
             placeholder="Brief Bio"
+            value={usedata.bio}
           ></textarea>
         </div>
         <div className="flex justify-center flex-col gap-9 items-center">

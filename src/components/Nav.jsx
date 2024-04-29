@@ -7,6 +7,18 @@ function Nav() {
           <Link to="/">
             <li>Home</li>
           </Link>
+          <Link to="/login">
+            <li>Login</li>
+          </Link>
+          <Link to="/register">
+            <li>Register</li>
+          </Link>
+          <Link to="/logout">
+            <li>Logout</li>
+          </Link>
+          <Link to="/campany">
+            <li>Company</li>
+          </Link>
         </ul>
         <div className="">
           <button className="border rounded-full p-6 mt-1 bg-stone-600 text-white">
