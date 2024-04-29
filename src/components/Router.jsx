@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound";
 import Site from "./Site";
 import AdminForm from "../pages/AdminForm";
 import Partner from "../pages/Partner";
+import Questionare from "../pages/Questionare";
 
 function Router() {
   return (
@@ -16,15 +17,6 @@ function Router() {
           element={
             <Layout>
               <Home />
-            </Layout>
-          }
-        />
-
-        <Route
-          path="/login"
-          element={
-            <Layout>
-              <Login />
             </Layout>
           }
         />
@@ -53,11 +45,12 @@ function Router() {
             </Layout>
           }
         />
-          <Route
-          path="/partner"
+
+        <Route
+          path="/questionare"
           element={
             <Layout>
-              <Partner />
+              <Questionare />
             </Layout>
           }
         />

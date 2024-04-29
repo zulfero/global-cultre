@@ -4,8 +4,8 @@ function SiteProp({ heading, img, image, paragraph, category, setCategory }) {
   return (
     <div>
       <div className="flex gap-5 mb-6"></div>
-      <div className="  border rounded-lg bg-stone-600 flex-col mb-[5em] ">
-        <img className="" src={image} alt="" />
+      <div className="border rounded-lg  bg-stone-400 flex-col mb-[5em] ">
+        <img className="pl-[25em] rounded-2xl pt-6" src={image} alt="" />
         <p className="text-white  ">{paragraph}</p>
       </div>
     </div>

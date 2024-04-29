@@ -1,3 +1,4 @@
+import QuestionareContent from "./QuestionareContent";
 import SiteProp from "./SiteProp";
 import { useState } from "react";
 
@@ -6,6 +7,7 @@ function Site() {
     setCategory(category.toLowerCase());
   };
   const [category, setCategory] = useState("food");
+  const [showbookingform, setShowBookingForm] = useState(false);
 
   function renderCultures() {
     console.log(category);
@@ -14,7 +16,8 @@ function Site() {
         <div>
           <SiteProp
             image="src/images/gikuyu/luofood.jpeg"
-            paragraph="   This is mostly our starch; the brown one features millet and cassava
+            paragraph=" 1.This is mostly our starch;
+             the brown one features millet and cassava
             flour. However, you can also have the white one that features maize
             flour. For Luos, this is a staple to date that you will have
             traditionally and today almost daily."
@@ -86,12 +89,23 @@ function Site() {
             influential and are the fourth largest ethnic group in Kenya today.
           </p>
           <div className="flex justify-center items-center mt-6">
-            <button className="text-white border rounded-full p-7 px-[5em] text-[1.3em]  bg-stone-700 shadow-white">
+            <button
+              onClick={() => setShowBookingForm(true)}
+              className="text-white border rounded-full p-6 px-[4em] text-[1.3em]  bg-stone-700 shadow-white"
+            >
               Interested
             </button>
+            {showbookingform ? (
+              <QuestionareContent
+                setShowBookingForm={setShowBookingForm}
+                showbookingform={setShowBookingForm}
+              />
+            ) : null}
           </div>
         </div>
       </div>
+
+      {/* <QuestionareContent /> */}
       <div className="  cursor-pointer container mx-auto mt-7 flex justify-between">
         <div onClick={(e) => handleChangeCategory(e, "food")}>
           <div>
@@ -122,9 +136,7 @@ function Site() {
           </div>
         </div>
       </div>
-      <div className=" container mx-auto gap-6 flex text-[1.4em] mt-5 ">
-        {renderCultures()}
-      </div>
+      <div className="gap-6 flex text-[1.4em] mt-5 ">{renderCultures()}</div>
     </div>
   );
 }
