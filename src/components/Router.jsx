@@ -7,6 +7,7 @@ import NotFound from "../pages/NotFound";
 import Register from "./Register";
 import Logout from "../pages/Logout";
 import Company from "./Company";
+import Pay from "../pages/Pay"
 
 function Router() {
   return (
@@ -37,11 +38,20 @@ function Router() {
             </Layout>
           }
         />
+
         <Route
           path="campany"
           element={
             <Layout>
               <Company />
+            </Layout>
+          }
+        />
+        <Route
+          path="pay"
+          element={
+            <Layout>
+              <Pay/>
             </Layout>
           }
         />
@@ -53,6 +63,7 @@ function Router() {
             </Layout>
           }
         />
+
         <Route
           path="*"
           element={

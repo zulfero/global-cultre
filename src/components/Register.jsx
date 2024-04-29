@@ -5,9 +5,10 @@ import {collection,addDoc} from "firebase/firestore"
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FaRegEye } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+
 function Register() {
 
-
+  const [showPassword, setShowPassword] = useState(true);
   const navigate= useNavigate()
   const [formData, setFormData] = useState({
     companyName: "",
@@ -19,7 +20,9 @@ function Register() {
   });
 const [errorMessage, setErrorMessage]=useState("")
 
-
+const handleShowPassword = () => {
+  setShowPassword((prev) => !prev);
+};
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,6 +53,9 @@ else if(formData.password===""){
 }
 else if(formData.password!==formData.confirmPassword){
   setErrorMessage("password doesn't match")
+}
+else if(formData.password.length<6){
+  setErrorMessage("minimum length is 6 character")
 }
 else{
   // console.log(formData)
@@ -82,7 +88,7 @@ console.log(user)
       <div className="container mx-auto flex flex-1 gap-9">
         <div className="flex justify-between gap-10">
         <div className="flex flex-col gap-10 justify-between ">
-          <h2 className="font-bold text-6xl mt-8 text-[#Eac117]">
+          <h2 className="font-bold text-6xl mt-8 ">
             Create Your Account
           </h2>
 
@@ -118,28 +124,35 @@ console.log(user)
             className="border-2 px-4 py-5 items-center shadow-xl outline-none"
             onChange={handleChange}
           />
-
-          <input
-            type="text"
-            placeholder="Password"
-            name="password"
-            className="border px-4 py-5 shadow-xl outline-none"
-            onChange={handleChange}
-          
-          />
-          
-          <input
-            type="text"
-            placeholder="Cornfirm Password"
-            name="confirmPassword"
-            className="border px-4 py-5 shadow-xl outline-none"
-            onChange={handleChange}
-          />
+          <div className="flex border-2  justify-between px-4 py-5 text-center shadow-xl outline-none">
+            <input
+              type={showPassword ? "password" : "text"}
+              placeholder="Password"
+              name="password"
+              className="outline-none"
+              onChange={handleChange}
+            />
+            <div className="flex gap-2" onClick={handleShowPassword}>
+              {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+            </div>
+          </div>
+          <div className="flex border-2  justify-between px-4 py-5 text-center shadow-xl outline-none">
+            <input
+              type={showPassword ? "password" : "text"}
+              placeholder="Cornfirm Password"
+              name="confirmPassword"
+              className="outline-none"
+              onChange={handleChange}
+            />
+            <div className="flex gap-2" onClick={handleShowPassword}>
+              {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+            </div>
+          </div>
           
             <p className="text-[red] text-2xl">{errorMessage}</p>
           <div className="flex justify-center" >
             <button
-              className="border-none rounded-[2em] px-[5em] py-5 font-bold bg-stone-700 text-white "
+              className="border rounded-full px-[4em] p-[1.4em] font-bold bg-stone-700 text-white "
               onClick={e=>handleRegister(e)}
             >
               Create Account
@@ -147,7 +160,7 @@ console.log(user)
           </div>
          < div className="flex justify-center text-[20px] mb-8">
               Already have an Account ?
-              <a href="/login" className="text-[#EAC117]">
+              <a href="/login" className="text-stone-500">
                 Login
               </a>
             </div>

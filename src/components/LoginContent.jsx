@@ -13,7 +13,7 @@ function LoginContent() {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false); // Added loading state
+  const [loading, setLoading] = useState(false); 
 
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ function LoginContent() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading state to true during sign-in process
+    setLoading(true); 
 
     if (formData.email === "") {
       setErrorMessage("Kindly fill in the email address");
@@ -41,7 +41,7 @@ function LoginContent() {
         .then((userData) => {
           const user = userData.user;
           console.log(user);
-          setLoading(false); // Reset loading state upon successful sign-in
+          setLoading(false); 
           navigate("/adminform");
         })
         .catch((error) => {
@@ -50,7 +50,7 @@ function LoginContent() {
           } else {
             setLoginErrorMessage("Invalid Email or Password");
           }
-          setLoading(false); // Reset loading state if sign-in fails
+          setLoading(false); 
         });
 
       try {
@@ -69,7 +69,7 @@ function LoginContent() {
           <img src="src/images/African couple with a baby in traditional ethnic vector image on VectorStock (3).jpeg" className="w-[100%] h-[90vh]" />
         </div>
         <div className="w-[40%] flex flex-col gap-[4em] my-[2em]">
-          <h1 className="flex justify-center text-[3em] font-bold text-[#EAC117]">
+          <h1 className="flex justify-center text-[3em] font-bold">
             Login to your Account
           </h1>
           <input
@@ -104,13 +104,13 @@ function LoginContent() {
           <p className="text-[red] text-2xl">{loginErrorMessage}</p>
 
           <div className="flex justify-center ">
-            <button className="border-none rounded-[2em] px-[5em] py-5 font-bold bg-stone-700 text-white" onClick={(e) => handleSignIn(e)}>
+            <button className="border rounded-full px-[4em] p-[1.4em] font-bold bg-stone-700 text-white" onClick={(e) => handleSignIn(e)}>
               {loading ? "Signing In..." : "Sign In"}
             </button>
           </div>
           <div className="flex justify-center text-[20px]">
             Don't Have An Account Yet ?  
-            <a href="/register" className="text-[#EAC117]">
+            <a href="/register" className="text-stone-500">
               Register 
             </a>
           </div>
