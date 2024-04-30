@@ -9,6 +9,7 @@ import Questionare from "../pages/Questionare";
 import Register from "./Register";
 import Logout from "../pages/Logout";
 import Company from "./Company";
+import Pay from "../pages/Pay";
 
 function Router() {
   return (
@@ -88,14 +89,14 @@ function Router() {
             </Layout>
           }
         />
-        {/* <Route
-          path="/pay"
+        <Route
+          path="pay"
           element={
             <Layout>
-              <Payment />
+              <Pay />
             </Layout>
           }
-        /> */}
+        />
       </Routes>
     </BrowserRouter>
   );
