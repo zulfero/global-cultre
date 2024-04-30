@@ -88,6 +88,14 @@ function Router() {
             </Layout>
           }
         />
+        {/* <Route
+          path="/pay"
+          element={
+            <Layout>
+              <Payment />
+            </Layout>
+          }
+        /> */}
       </Routes>
     </BrowserRouter>
   );

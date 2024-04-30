@@ -36,7 +36,7 @@ function QuestionareContent({ showbookingform, setShowBookingForm }) {
     }
   }
   return (
-    <div className="container mx-auto bg-stone-200 flex flex-col gap-8 py-5 absolute top-[15%] overflow-hidden">
+    <div className="container mx-auto bg-stone-200 flex left-[13%] flex-col tra  gap-8  absolute top-[15%] overflow-hidden">
       {/* <div className="flex justify-center flex-col items-center gap-5 font-bold text-2xl"> */}
       <div className="flex justify-center ml-[44.5em] ">
         <button

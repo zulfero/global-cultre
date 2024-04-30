@@ -163,12 +163,7 @@ function Company() {
                 >
                   Book Now
                 </button>
-                {/* {showbookingform ? (
-              <QuestionareContent
-                setShowBookingForm={setShowBookingForm}
-                showbookingform={setShowBookingForm}
-              />
-            ) : null} */}
+         
               </div>
             </div>
           </div>
